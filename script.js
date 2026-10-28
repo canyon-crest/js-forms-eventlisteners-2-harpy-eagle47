@@ -17,7 +17,9 @@
 
 // STEP 1: Get the "Shout" button by its ID ("btnShout")
 //         using document.getElementById()
-
+document.getElementById("btnShout").addEventListener('click',function(){
+    outshout.innerHTML = shoutInput.value.toUpperCase() + "!"
+})
 // STEP 2: Add a click event listener to the button.
 //         Inside the listener function:
 //         a) Get the text from the input with ID "shoutInput"
@@ -39,6 +41,38 @@
 //   - Toppings (checkboxes): $0.50 each
 //   - Service (dropdown): Dine In $0, Take Out $1.50,
 //     Delivery $3.00
+document.getElementById("btnCalc").addEventListener('click', function(){
+    let size = document.getElementsByName("rg")
+    for(let i=0;i<size.length;i++){
+        if(size[i].checked){
+            sizePrice = parseFloat(size[i].value)
+        }
+    }
+    let toppings = document.getElementsByName("cb")
+    let count = 0
+    for(let i=0; i<toppings.length; i++){
+        if(toppings[i].checked){
+            toppingPrice = toppingPrice+ .5
+        }
+    }
+    let service = document.getElementsByName("serviceSelect")
+    let serviceFee = 0
+    if(service === "dinein"){
+        serviceFee = 0
+    }else if(service ==="takeout"){
+        serviceFee = 1.5
+    }else{
+        serviceFee = 3
+    }
+
+    let total = serviceFee + toppingPrice + sizePrice
+    let name = document.getElementById("myInput")
+        if(name===""){
+            name = "Customer"
+        }
+    document.getElementById("myPara").textContent = name +", your total is $" +total.toFixed(2)
+})
+
 
 // STEP 3: Get the "Calculate Total" button by ID ("btnCalc")
 //         Add a click event listener.
@@ -83,3 +117,18 @@
 //         c) Uncheck ALL topping checkboxes (loop through them)
 //         d) Set the service dropdown value to "dinein"
 //         e) Set the output paragraph innerHTML to ""
+document.getElementById("clearBtn").addEventListener('click', function(){
+    document.getElementById("myInput").value = ""
+    document.getElementById("r1").checked = false
+    document.getElementById("r2").checked = false
+    document.getElementById("r3").checked = true
+    document.getElementById("r4").checked = false
+
+    let checkboxes = document.getElementsByName("cb")
+    for(let i=0;i<checkboxes.length;i++){
+        checkboxes[i].checked = false;
+    }
+
+    document.getElementById("serviceSelect").value = "dinein"
+    document.getElementById("myPara").textContent = ""
+})
