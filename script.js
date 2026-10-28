@@ -17,8 +17,9 @@
 
 // STEP 1: Get the "Shout" button by its ID ("btnShout")
 //         using document.getElementById()
-document.getElementById("btnShout").addEventListener('click',function(){
-    outshout.innerHTML = shoutInput.value.toUpperCase() + "!"
+document.getElementById("btnShout").addEventListener("click",function(){
+    let text = document.getElementById("shoutInput").value
+    document.getElementById("outShout").textContent = text.toUppercase()+"!"
 })
 // STEP 2: Add a click event listener to the button.
 //         Inside the listener function:
@@ -42,17 +43,18 @@ document.getElementById("btnShout").addEventListener('click',function(){
 //   - Service (dropdown): Dine In $0, Take Out $1.50,
 //     Delivery $3.00
 document.getElementById("btnCalc").addEventListener('click', function(){
-    let size = document.getElementsByName("rg")
-    for(let i=0;i<size.length;i++){
-        if(size[i].checked){
-            sizePrice = parseFloat(size[i].value)
+    let sizePrice = 0
+    let radios = document.getElementsByName("rg")
+    for(let i=0;i<radios.length;i++){
+        if(radios[i].checked){
+            sizePrice = parseFloat(radios[i].value)
         }
     }
-    let toppings = document.getElementsByName("cb")
-    let count = 0
-    for(let i=0; i<toppings.length; i++){
-        if(toppings[i].checked){
-            toppingPrice = toppingPrice+ .5
+    let checkboxes = document.getElementsByName("cb")
+    let toppingPrice = 0
+    for(let i=0; i<checkboxes.length; i++){
+        if(checkboxes[i].checked){
+            checkboxes = toppingPrice+ .5
         }
     }
     let service = document.getElementsByName("serviceSelect")
