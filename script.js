@@ -19,7 +19,7 @@
 //         using document.getElementById()
 document.getElementById("btnShout").addEventListener("click",function(){
     let text = document.getElementById("shoutInput").value
-    document.getElementById("outShout").textContent = text.toUppercase()+"!"
+    document.getElementById("outShout").textContent = text.toUpperCase()+"!"
 })
 // STEP 2: Add a click event listener to the button.
 //         Inside the listener function:
@@ -54,7 +54,7 @@ document.getElementById("btnCalc").addEventListener('click', function(){
     let toppingPrice = 0
     for(let i=0; i<checkboxes.length; i++){
         if(checkboxes[i].checked){
-            checkboxes = toppingPrice+ .5
+            toppingPrice += .5
         }
     }
     let service = document.getElementsByName("serviceSelect")
