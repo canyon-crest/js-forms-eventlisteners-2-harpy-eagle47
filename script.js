@@ -57,7 +57,7 @@ document.getElementById("btnCalc").addEventListener('click', function(){
             toppingPrice += .5
         }
     }
-    let service = document.getElementsByName("serviceSelect")
+    let service = document.getElementById("serviceSelect").value;
     let serviceFee = 0
     if(service === "dinein"){
         serviceFee = 0
